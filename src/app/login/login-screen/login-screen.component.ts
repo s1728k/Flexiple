@@ -12,6 +12,7 @@ export class LoginScreenComponent implements OnInit {
 
   email = "";
   password = "";
+  rem = false;
   error = {};
 
   constructor(private appStore: AppStore, private router: Router, private authGuard: AuthGuard,) { }

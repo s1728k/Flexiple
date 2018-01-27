@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-profile-selection',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileSelectionComponent implements OnInit {
 
-  constructor() { }
+	sel = {};
+	index: number;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  selChange(i){
+  	this.sel = {};
+  	this.sel[i] = true;
+  	this.index = i;
+  }
+
+  routeNext(){
+	if(this.index==3){
+		this.router.navigate(['/comp-signup']);
+	}else{
+		this.router.navigate(['/dev-signup']);
+	}
   }
 
 }

@@ -56,7 +56,7 @@ export class CompSignupComponent implements OnInit {
     this.validateNewCompanyPassword();
     this.validateNewCompanyConfirmPassword();
     this.validateNewCompany();
-    if (this.error == {}){
+    if (Object.getOwnPropertyNames(this.error).length === 0){
       this.appStore.companies.push(this.company);
       this.company = new Company();
       

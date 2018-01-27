@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
 
+email = "";
   constructor() { }
 
   ngOnInit() {

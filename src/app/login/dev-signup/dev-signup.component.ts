@@ -29,7 +29,8 @@ export class DevSignupComponent implements OnInit {
     this.validateNewDevPassword();
     this.validateNewDevConfirmPassword();
     this.validateNewDev();
-    if (this.error == {}){
+    if (Object.getOwnPropertyNames(this.error).length === 0){
+      console.log("Entered")
       this.appStore.freelancers.push(this.dev);
       this.dev = new Dev();
       
