@@ -1,0 +1,134 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 nav-head">
+			<h3><img src="https://s3.ap-south-1.amazonaws.com/flexiple/images/logo/logo.png" />Flexiple</h3>
+		</div>
+		<div class="col-md-6 nav-tail">
+			<label class="nav-link">HOW IT WORKS</label><label class="nav-link">CATAGORIES</label><label class="nav-link">PROCESS</label><label class="nav-link">FAQ</label><label class="nav-link">BLOG</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 text-center">
+			<h2>Work with companies which you know worth.</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 text-center">
+			<p>Create a profile today and be found by the multiple companies which are a good fit your skills and goals.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<form class="signup-form">
+				<div class="form-group inpiconc">
+					<label for="full_name" class="form-lable">FULL NAME</label>
+					<i class="glyphicon glyphicon-user inpicon"></i>
+					<input type="text" id="full_name" name="full_name" class="form-control inpoffset" [(ngModel)]="dev['full_name']" />
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group inpiconc">
+							<label for="tel" class="form-lable">CONTACT NO. WITH COUNTRY CODE</label>
+							<i class="glyphicon glyphicon-user inpicon"></i>
+							<input type="tel" id="tel" name="tel" class="form-control inpoffset" [(ngModel)]="dev['tel']" />
+						</div>
+						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group inpiconc">
+							<label for="skype" class="form-lable">SKYPE ID</label>
+							<i class="glyphicon glyphicon-user inpicon"></i>
+							<input type="text" id="skype" name="skype" class="form-control inpoffset" [(ngModel)]="dev['skype']" />
+						</div>
+						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+					</div>
+				</div>
+				<div class="form-group inpiconc">
+					<label for="profession" class="form-lable">PROFESSION</label>
+					<i class="glyphicon glyphicon-user inpicon"></i>
+					<select id="profession" name="profession" class="form-control inpoffset" [(ngModel)]="dev['profession']" required>
+						<option value="" disabled selected hidden>Select one</option>
+						<option value="Designer">Designer</option>
+						<option value="Deveoper">Deveoper</option>
+						<option value="ContentWriter">ContentWriter</option>
+					</select>
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+			</form>
+			<hr>
+			<form class="signup-form">
+				<div class="form-group inpiconc">
+					<label for="email" class="form-lable">EMAIL ID</label>
+					<i class="glyphicon glyphicon-envelope inpicon"></i>
+					<input type="email" id="email" name="email" class="form-control inpoffset" [(ngModel)]="dev['email']" />
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<div class="form-group inpiconc">
+					<label for="password" class="form-lable">PASSWORD</label>
+					<i class="glyphicon glyphicon-lock inpicon"></i>
+					<i class="glyphicon glyphicon-eye-open inpicon2" *ngIf="!pwShow" (click)="onPwopen()"></i>
+					<input type="password" id="password" name="password" class="form-control inpoffset" [(ngModel)]="dev['password']" *ngIf="!pwShow"/>
+					<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
+					<input type="text" id="password" name="password" class="form-control inpoffset" [(ngModel)]="dev['password']" *ngIf="pwShow" />
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<div class="form-group inpiconc">
+					<label for="confirm_password" class="form-lable">CONFIRM PASSWORD</label>
+					<i class="glyphicon glyphicon-lock inpicon"></i>
+					<i class="glyphicon glyphicon-eye-open inpicon2" *ngIf="!pwShow" (click)="onPwopen()"></i>
+					<input type="password" id="confirm_password" name="confirm_password" class="form-control inpoffset" [(ngModel)]="dev['confirm_password']" *ngIf="!pwShow"/>
+					<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
+					<input type="text" id="confirm_password" name="confirm_password" class="form-control inpoffset" [(ngModel)]="dev['confirm_password']" *ngIf="pwShow" />
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>	
+		<div class="col-md-6 terms text-center">
+			<p>By signing up, you agree to the <a>terms of service</a> and <a>privacy policy</a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>	
+		<div class="col-md-6 terms text-center">
+			<button class="send" (click)="saveDev()">Save & Proceed</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>	
+		<div class="col-md-6 terms text-center">
+			<p>Already have an account <a [routerLink]="['/login']">Sign In.</a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>	
+		<div class="col-md-10">
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 text-center">
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-google"></a>
+			<a href="#" class="fa fa-linkedin"></a>
+			<a href="#" class="fa fa-youtube"></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 footer-notes">
+			<p>Copywrite 2016 Flexiple</p>
+		</div>
+		<div class="col-md-5 footer-notes text-right">
+			<label class="footer-link">About Us</label><label class="footer-link">Careers</label><label class="footer-link">Privacy Policy</label><label class="footer-link">Contact Us</label>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>

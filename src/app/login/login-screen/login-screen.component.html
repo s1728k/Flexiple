@@ -1,0 +1,28 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<div class="login-screen">
+				<button class="into">X</button>
+				<h3>SIGN IN</h3>
+				<div class="form-group inpiconc">
+					<label for="email">EMAIL ID</label>
+					<i class="glyphicon glyphicon-envelope inpicon"></i>
+					<input type="email" id="email" class="form-control inpoffset" [(ngModel)]="email" />
+				</div>
+				<div class="form-group inpiconc">
+					<label for="password">PASSWORD</label>
+					<i class="glyphicon glyphicon-lock inpicon"></i>
+					<input type="password" id="password" class="form-control inpoffset" [(ngModel)]="password" />
+				</div>
+				<label for="rem" class="hw"><input type="checkbox" id="rem" [(ngModel)]="rem" />Remember me</label><label class="hw text-right"><a [routerLink]="['/reset-password']">Forgot password</a></label>
+				<div class="form-group text-center">
+					<button class="send" (click)="login()">Send</button>
+				</div>
+				<p class="error">{{error['login_failed']}}</p>
+				<p class="text-center">Dont have an account <a [routerLink]="['/profile-selection']">Create one now</a></p>
+			</div>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+</div>

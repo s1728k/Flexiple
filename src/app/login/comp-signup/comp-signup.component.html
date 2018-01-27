@@ -1,0 +1,162 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 nav-head">
+			<h3><img src="https://s3.ap-south-1.amazonaws.com/flexiple/images/logo/logo.png" />Flexiple</h3>
+		</div>
+		<div class="col-md-6 nav-tail">
+			<label class="nav-link">HOW IT WORKS</label><label class="nav-link">CATAGORIES</label><label class="nav-link">PROCESS</label><label class="nav-link">FAQ</label><label class="nav-link">BLOG</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 text-center">
+			<h2>Build the best companies by hiring the best candidates.</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 text-center">
+			<p>Post a job tody and find relavent candidate sent right to you.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<form class="signup-form">
+				<div class="form-group inpiconc">
+					<label for="company_name" class="form-lable">COMPANY NAME</label>
+					<i class="fa fa-building inpicon"></i>
+					<input type="text" id="company_name" name="company_name" class="form-control inpoffset" [(ngModel)]="company['company_name']" />
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<hr>
+				<div class="form-group inpiconc">
+					<label for="full_name" class="form-lable">FULL NAME</label>
+					<i class="glyphicon glyphicon-user inpicon"></i>
+					<input type="text" id="full_name" name="full_name" class="form-control inpoffset" [(ngModel)]="company['full_name']" />
+				</div>
+				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group inpiconc">
+							<label for="tel" class="form-lable">CONTACT NO. WITH COUNTRY CODE</label>
+							<i class="glyphicon glyphicon-user inpicon"></i>
+							<input type="tel" id="tel" name="tel" class="form-control inpoffset" [(ngModel)]="company['tel']" />
+						</div>
+						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group inpiconc">
+							<label for="skype" class="form-lable">SKYPE ID</label>
+							<i class="glyphicon glyphicon-user inpicon"></i>
+							<input type="text" id="skype" name="skype" class="form-control inpoffset" [(ngModel)]="company['skype']" />
+						</div>
+						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group inpiconc">
+							<label for="email" class="form-lable">EMAIL ID</label>
+							<i class="glyphicon glyphicon-envelope inpicon"></i>
+							<input type="email" id="email" name="email" class="form-control inpoffset" [(ngModel)]="company['email']" />
+						</div>
+						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group inpiconc">
+							<label for="password" class="form-lable">PASSWORD</label>
+							<i class="glyphicon glyphicon-lock inpicon"></i>
+							<i class="glyphicon glyphicon-eye-open inpicon2" *ngIf="!pwShow" (click)="onPwopen()"></i>
+							<input type="password" id="password" name="password" class="form-control inpoffset" [(ngModel)]="company['password']" *ngIf="!pwShow"/>
+							<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
+							<input type="text" id="password" name="password" class="form-control inpoffset" [(ngModel)]="company['password']" *ngIf="pwShow" />
+						</div>
+						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+					</div>
+				</div>
+			</form>
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>	
+		<div class="col-md-6 referral-code">
+			<h6>REFERAL CODE</h6>
+			<p>(A refferal code is given to a user when Lorem ipsum dolor sit amet, consectuer adipiscing elit, sed do elusmod tempor incididum )</p>
+		</div>
+	</div>
+	<form>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="radio"><input type="radio" value="true" name="have_referral" [(ngModel)]="company['have_referral']" (click)="haveRefferal()" /> I have referral code</label>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="showReferralCode">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 refftext">
+			<input type="number" class="refdigit" name="r0" [(ngModel)]="r6[0]" (change)="referralCodeChange(0)" />
+			<input type="number" class="refdigit" name="r1" [(ngModel)]="r6[1]" (change)="referralCodeChange(1)" />
+			<input type="number" class="refdigit" name="r2" [(ngModel)]="r6[2]" (change)="referralCodeChange(2)" />
+			<input type="number" class="refdigit" name="r3" [(ngModel)]="r6[3]" (change)="referralCodeChange(3)" />
+			<input type="number" class="refdigit" name="r4" [(ngModel)]="r6[4]" (change)="referralCodeChange(4)" />
+			<input type="number" class="refdigit" name="r5" [(ngModel)]="r6[5]" (change)="referralCodeChange(5)" /><label> Enter 6 digit referral code</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="radio"><input type="radio" value="false" name="have_referral" [(ngModel)]="have_referral" (click)="dontHaveRefferal()" /> I don't have referral code</label>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="showAltReferralCode">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 refftext">
+			<h3>We will get in touch with you soon!</h3>
+			<p>Proceed to tell us more about your requirements</p>
+		</div>
+	</div>
+	</form>
+	<div class="row">
+		<div class="col-md-3"></div>	
+		<div class="col-md-6 terms text-center">
+			<button class="send" (click)="saveCompany()">Save & Proceed</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>	
+		<div class="col-md-6 terms text-center">
+			<p>Already have an account <a [routerLink]="['/login']">Sign In.</a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>	
+		<div class="col-md-10">
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 text-center">
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-google"></a>
+			<a href="#" class="fa fa-linkedin"></a>
+			<a href="#" class="fa fa-youtube"></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 footer-notes">
+			<p>Copywrite 2016 Flexiple</p>
+		</div>
+		<div class="col-md-5 footer-notes text-right">
+			<label class="footer-link">About Us</label><label class="footer-link">Careers</label><label class="footer-link">Privacy Policy</label><label class="footer-link">Contact Us</label>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>

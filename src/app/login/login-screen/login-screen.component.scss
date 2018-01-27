@@ -1,0 +1,77 @@
+.login-screen{
+	position: relative;
+	font-family: georgia;
+	margin-top:100px;
+	height:400px;
+	box-shadow:0 5px 60px 10px rgba(0, 0, 0, 0.2);
+	padding:20px;
+	h3{
+		text-align:center;
+	}
+	.into{
+		position: absolute;
+		right:10px;
+		top:10px;
+		background:white;
+		border:0px solid white;
+		font-weight:bold;
+		outline:none;
+	}
+	.send{
+		background:lightgrey;
+		border:0px;
+		padding:10px;
+		padding-right:40px;
+		padding-left:40px;
+		margin-bottom:20px;
+		margin-top:10px;
+		color:white;
+		font-size:20px;
+		font-weight:bold;
+		border-radius:10px;
+		outline:none;
+		box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+		&:hover{
+			background:grey;
+		}
+		&:active{
+			box-shadow:0 0px 0px rgba(0, 0, 0, 0.2);
+		}
+	}
+	p{
+		font-size:15px;
+		&.error{
+			color:red;
+			font-size:8px;
+			text-align:center;
+			padding-right:10px;
+		}
+	}
+	a{
+		cursor: pointer;
+	}
+	.hw{
+		width: 50%;
+	}
+}
+
+.inpiconc{
+	position:relative;
+}
+.inpicon{
+	position:absolute;
+	top:38px;
+	left:10px;
+	opacity: 0.5;
+}
+.inpoffset{
+	background:rgba(0, 0, 0, 0.2);
+	border:0px;
+	padding:20px;
+	padding-left:30px;
+	border-radius:2px;
+	&:focus{
+		background:white;
+		border:1px solid grey;
+	}
+}

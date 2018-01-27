@@ -1,0 +1,40 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Dashboard</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9"></div>
+		<div class="col-md-3">
+			<p><a [routerLink]="['/login']">Goto Login Page</a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<h5>Logged In Users' Emails</h5>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Sr</th>
+						<th>Emails</th>
+						<th>logout</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of freelancers; let i=index;">
+						<td>{{i+1}}</td>
+						<td>{{item['email']}}</td>
+						<td><a (click)="logoutFreelancer(item)">logout</a></td>
+					</tr>
+					<tr *ngFor="let item of companies; let i=index;">
+						<td>{{i+1}}</td>
+						<td>{{item['email']}}</td>
+						<td><a (click)="logoutCompany(item)">logout</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
