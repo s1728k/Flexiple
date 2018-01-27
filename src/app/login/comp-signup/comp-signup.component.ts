@@ -54,8 +54,8 @@ export class CompSignupComponent implements OnInit {
     this.error = {};
     this.validateNewCompanyEmail();
     this.validateNewCompanyPassword();
-    this.validateNewCompanyConfirmPassword();
     this.validateNewCompany();
+    console.log(this.error)
     if (Object.getOwnPropertyNames(this.error).length === 0){
       this.appStore.companies.push(this.company);
       this.company = new Company();
@@ -70,7 +70,6 @@ export class CompSignupComponent implements OnInit {
   }
 
   validateNewCompany(){
-    this.assert('table_name', this.company['table_name'])
     this.assert('company_name', this.company['company_name'])
     this.assert('full_name', this.company['full_name'])
     this.assert('tel', this.company['tel'])
