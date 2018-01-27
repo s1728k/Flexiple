@@ -7,7 +7,7 @@ export class Company {
 	email: string;
 	password: string;
 	have_referral: boolean;
-	referralCode: number;
+	referralCode: string;;
 
 	constructor(values: Object = {}) {
 		Object.assign(this, values);

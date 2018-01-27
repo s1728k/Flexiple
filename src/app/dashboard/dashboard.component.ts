@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AppStore } from '../app.store'
-import { Company } from './login/comp-signup/company.model';
-import { Dev } from './login/dev-signup/dev.model'
+import { Company } from '../login/comp-signup/company.model';
+import { Dev } from '../login/dev-signup/dev.model'
 
 @Component({
   selector: 'app-dashboard',

@@ -25,17 +25,17 @@
 			<form class="signup-form">
 				<div class="form-group inpiconc">
 					<label for="company_name" class="form-lable">COMPANY NAME</label>
-					<i class="fa fa-building inpicon"></i>
+					<i class="fa fa-building inpicon faicon"></i>
 					<input type="text" id="company_name" name="company_name" class="form-control inpoffset" [(ngModel)]="company['company_name']" />
 				</div>
-				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="error" [style.visibility]="error['company_name']">{{error['company_name_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 				<hr>
 				<div class="form-group inpiconc">
 					<label for="full_name" class="form-lable">FULL NAME</label>
 					<i class="glyphicon glyphicon-user inpicon"></i>
 					<input type="text" id="full_name" name="full_name" class="form-control inpoffset" [(ngModel)]="company['full_name']" />
 				</div>
-				<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="error" [style.visibility]="error['full_name']">{{error['full_name_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group inpiconc">
@@ -43,7 +43,7 @@
 							<i class="glyphicon glyphicon-user inpicon"></i>
 							<input type="tel" id="tel" name="tel" class="form-control inpoffset" [(ngModel)]="company['tel']" />
 						</div>
-						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+						<p class="error" [style.visibility]="error['tel']">{{error['tel_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group inpiconc">
@@ -51,7 +51,7 @@
 							<i class="glyphicon glyphicon-user inpicon"></i>
 							<input type="text" id="skype" name="skype" class="form-control inpoffset" [(ngModel)]="company['skype']" />
 						</div>
-						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+						<p class="error" [style.visibility]="error['skype']">{{error['skype_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 					</div>
 				</div>
 				<div class="row">
@@ -61,7 +61,7 @@
 							<i class="glyphicon glyphicon-envelope inpicon"></i>
 							<input type="email" id="email" name="email" class="form-control inpoffset" [(ngModel)]="company['email']" />
 						</div>
-						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+						<p class="error" [style.visibility]="error['email']">{{error['email_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group inpiconc">
@@ -72,7 +72,7 @@
 							<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
 							<input type="text" id="password" name="password" class="form-control inpoffset" [(ngModel)]="company['password']" *ngIf="pwShow" />
 						</div>
-						<p class="error">Mandatory Field. <i class="glyphicon glyphicon-info-sign"></i></p>
+						<p class="error" [style.visibility]="error['password']">{{error['password_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 					</div>
 				</div>
 			</form>

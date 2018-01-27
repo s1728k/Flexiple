@@ -157,6 +157,10 @@ input[type=number] {
 	top:36px;
 	left:10px;
 	opacity: 0.5;
+	&.faicon{
+		top:25px;
+		left:-5px;
+	}
 }
 .inpicon2{
 	position:absolute;
