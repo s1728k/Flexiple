@@ -33,6 +33,7 @@ export class DevSignupComponent implements OnInit {
         console.log(res);
         if(res['status']=='success'){
           if(res['data']['errors']){
+            this.e = {};
             this.e = res['data']['errors'];
             console.log(this.e);
           }

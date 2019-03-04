@@ -52,6 +52,7 @@ export class LoginScreenComponent implements OnInit {
             this.msg = res['message'];
           }
           if(res['errors']){
+            this.e = {};
             this.e = res['errors'];
           }
         }

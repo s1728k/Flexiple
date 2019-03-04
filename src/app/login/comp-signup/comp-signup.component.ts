@@ -62,6 +62,7 @@ export class CompSignupComponent implements OnInit {
         console.log(res);
         if(res['status']=='success'){
           if(res['data']['errors']){
+            this.e = {};
             this.e = res['data']['errors'];
           }
         }else{
