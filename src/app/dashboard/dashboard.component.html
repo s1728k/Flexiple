@@ -1,37 +1,74 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">DashBoard</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li [class.active]="active['designer']"><a style="cursor: pointer;" (click)="routing('designer')">Designers</a></li>
+      <li [ngClass]="{ 'active': active['developer'] }"><a style="cursor: pointer;" (click)="routing('developer')">Developers</a></li>
+      <li [class.active]="active['content_writer']"><a style="cursor: pointer;" (click)="routing('content_writer')">Content Writers</a></li>
+      <li [class.active]="active['company']"><a style="cursor: pointer;" (click)="routing('company')">Companies</a></li>
+      <li><a style="cursor: pointer;" (click)="logoutFreelancer()">Log out</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<h3>Dashboard</h3>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-9"></div>
-		<div class="col-md-3">
-			<p><a [routerLink]="['/login']">Goto Login Page</a></p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-			<h5>Logged In Users' Emails</h5>
-			<table class="table">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 table-responsive">
+			<table class="table" *ngIf="!active['company']">
+				<caption>Users | My name is {{user['full_name']}}. I am {{user['profession']}}</caption>
 				<thead>
 					<tr>
-						<th>Sr</th>
-						<th>Emails</th>
-						<th>logout</th>
+						<th>Id</th>
+						<th>Full Name</th>
+						<th>Tel</th>
+						<th>Skype</th>
+						<th>Profession</th>
+						<th>Email</th>
+						<th>Created At</th>
+						<th>Updated At</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr *ngFor="let item of freelancers; let i=index;">
-						<td>{{i+1}}</td>
-						<td>{{item['email']}}</td>
-						<td><a (click)="logoutFreelancer(item)">logout</a></td>
+						<td>{{ item['id'] }}</td>
+						<td>{{ item['full_name'] }}</td>
+						<td>{{ item['tel'] }}</td>
+						<td>{{ item['skype'] }}</td>
+						<td>{{ item['profession'] }}</td>
+						<td>{{ item['email'] }}</td>
+						<td>{{ item['created_at'] }}</td>
+						<td>{{ item['updated_at'] }}</td>
 					</tr>
+				</tbody>
+			</table>
+			<table class="table" *ngIf="active['company']">
+				<caption>Companies  | Company name : {{user['company_name']}}</caption>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Company Name</th>
+						<th>Full Name</th>
+						<th>Tel</th>
+						<th>Skype</th>
+						<th>Email</th>
+						<th>Refferal Code</th>
+						<th>Created At</th>
+						<th>Updated At</th>
+					</tr>
+				</thead>
+				<tbody>
 					<tr *ngFor="let item of companies; let i=index;">
-						<td>{{i+1}}</td>
-						<td>{{item['email']}}</td>
-						<td><a (click)="logoutCompany(item)">logout</a></td>
+						<td>{{ item['id'] }}</td>
+						<td>{{ item['company_name'] }}</td>
+						<td>{{ item['full_name'] }}</td>
+						<td>{{ item['tel'] }}</td>
+						<td>{{ item['skype'] }}</td>
+						<td>{{ item['email'] }}</td>
+						<td>{{ item['referral_code'] }}</td>
+						<td>{{ item['created_at'] }}</td>
+						<td>{{ item['updated_at'] }}</td>
 					</tr>
 				</tbody>
 			</table>

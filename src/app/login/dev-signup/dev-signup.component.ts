@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { RestApiService } from '../../shared/rest-api.service';
 import { AppStore } from '../../app.store'
 import { Dev } from './dev.model'
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-dev-signup',
@@ -14,7 +16,7 @@ export class DevSignupComponent implements OnInit {
   pwShow = false;
   error = {};
 
-  constructor(private appStore: AppStore, private router: Router,) { }
+  constructor(private http: RestApiService, private appStore: AppStore, private router: Router,) { }
 
   ngOnInit() {
   }
@@ -30,12 +32,13 @@ export class DevSignupComponent implements OnInit {
     this.validateNewDevConfirmPassword();
     this.validateNewDev();
     if (Object.getOwnPropertyNames(this.error).length === 0){
-      console.log("Entered")
-      this.appStore.freelancers.push(this.dev);
-      this.dev = new Dev();
-      
-      alert("Dev Saved");
-      this.router.navigate(['/login']);
+      this.http.url = environment.baseUrl + '1';
+      this.dev['table'] = this.dev['profession'];
+      this.dev['secret'] = "$2y$10$IKTMx1reCFHIgOTzqQoPeukNferN5Z10bFol.itjyclfX7BAxtf4m";
+      this.http.addObj(this.dev).subscribe((data:any)=>{
+        console.log(data);
+      });
+      // this.router.navigate(['/login']);
     }
   }
 
@@ -50,7 +53,7 @@ export class DevSignupComponent implements OnInit {
     this.assert('profession', this.dev['profession']);
     this.assert('email', this.dev['email']);
     this.assert('password', this.dev['password']);
-    this.assert('confirm_password', this.dev['confirm_password']);
+    this.assert('password_confirmation', this.dev['password_confirmation']);
   }
 
   validateNewDevEmail(){
@@ -68,9 +71,9 @@ export class DevSignupComponent implements OnInit {
   }
 
   validateNewDevConfirmPassword(){
-    if(this.dev['password'] != this.dev['confirm_password']){
-      this.error['confirm_password_ev'] = "Passwords did not match";
-      this.error['confirm_password']="visible";
+    if(this.dev['password'] != this.dev['password_confirmation']){
+      this.error['password_confirmation_ev'] = "Passwords did not match";
+      this.error['password_confirmation']="visible";
     }
   }
 

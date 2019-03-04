@@ -1,8 +1,8 @@
 .login-screen{
-	position: relative;
+	// position: relative;
 	font-family: georgia;
 	margin-top:100px;
-	height:400px;
+	// height:400px;
 	box-shadow:0 5px 60px 10px rgba(0, 0, 0, 0.2);
 	padding:20px;
 	h3{
@@ -57,21 +57,39 @@
 
 .inpiconc{
 	position:relative;
+	margin-bottom:0px;
 }
 .inpicon{
 	position:absolute;
-	top:38px;
+	top:36px;
 	left:10px;
+	opacity: 0.5;
+}
+.inpicon2{
+	position:absolute;
+	top:36px;
+	right:10px;
 	opacity: 0.5;
 }
 .inpoffset{
 	background:rgba(0, 0, 0, 0.2);
 	border:0px;
-	padding:20px;
+	height:40px;
 	padding-left:30px;
 	border-radius:2px;
 	&:focus{
 		background:white;
 		border:1px solid grey;
 	}
+}
+#profession{
+	background:white;
+	border:1px solid grey;
+}
+.error{
+	color:red;
+	font-size:8px;
+	text-align:right;
+	padding-right:10px;
+	visibility: hidden;
 }

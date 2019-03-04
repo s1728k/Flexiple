@@ -1,10 +1,14 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 nav-head">
-			<h3><img src="https://s3.ap-south-1.amazonaws.com/flexiple/images/logo/logo.png" />Flexiple</h3>
+			<h3>Flexiple</h3>
 		</div>
-		<div class="col-md-6 nav-tail">
-			<label class="nav-link">HOW IT WORKS</label><label class="nav-link">CATAGORIES</label><label class="nav-link">PROCESS</label><label class="nav-link">FAQ</label><label class="nav-link">BLOG</label>
+		<div class="col-md-6 nav-tail text-right">
+			<label class="nav-link">HOW IT WORKS</label>
+			<label class="nav-link">CATAGORIES</label>
+			<label class="nav-link">PROCESS</label>
+			<label class="nav-link">FAQ</label>
+			<label class="nav-link">BLOG</label>
 		</div>
 	</div>
 	<div class="row">
@@ -52,9 +56,9 @@
 					<i class="glyphicon glyphicon-user inpicon"></i>
 					<select id="profession" name="profession" class="form-control inpoffset" [(ngModel)]="dev['profession']" required>
 						<option value="" disabled selected hidden>Select one</option>
-						<option value="Designer">Designer</option>
-						<option value="Deveoper">Deveoper</option>
-						<option value="ContentWriter">ContentWriter</option>
+						<option value="designer">Designer</option>
+						<option value="developer">Deveoper</option>
+						<option value="content_writer">ContentWriter</option>
 					</select>
 				</div>
 				<p class="error" [style.visibility]="error['profession']">{{error['profession_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
@@ -77,14 +81,14 @@
 				</div>
 				<p class="error" [style.visibility]="error['password']">{{error['password_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 				<div class="form-group inpiconc">
-					<label for="confirm_password" class="form-lable">CONFIRM PASSWORD</label>
+					<label for="password_confirmation" class="form-lable">CONFIRM PASSWORD</label>
 					<i class="glyphicon glyphicon-lock inpicon"></i>
 					<i class="glyphicon glyphicon-eye-open inpicon2" *ngIf="!pwShow" (click)="onPwopen()"></i>
-					<input type="password" id="confirm_password" name="confirm_password" class="form-control inpoffset" [(ngModel)]="dev['confirm_password']" *ngIf="!pwShow"/>
+					<input type="password" id="password_confirmation" name="password_confirmation" class="form-control inpoffset" [(ngModel)]="dev['password_confirmation']" *ngIf="!pwShow"/>
 					<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
-					<input type="text" id="confirm_password" name="confirm_password" class="form-control inpoffset" [(ngModel)]="dev['confirm_password']" *ngIf="pwShow" />
+					<input type="text" id="password_confirmation" name="password_confirmation" class="form-control inpoffset" [(ngModel)]="dev['password_confirmation']" *ngIf="pwShow" />
 				</div>
-				<p class="error" [style.visibility]="error['confirm_password']">{{error['confirm_password_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="error" [style.visibility]="error['password_confirmation']">{{error['password_confirmation_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
 			</form>
 		</div>
 	</div>

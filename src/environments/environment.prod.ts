@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  userAccess: "",
+  baseUrl: "https://honeyweb.org/api/",
 };

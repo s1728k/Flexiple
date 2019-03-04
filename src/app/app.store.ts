@@ -3,9 +3,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AppStore {
 	
-	freelancers = [];
-	companies = [];
-	loggedInUser = {};
+	app = {};
+    designers = [];
+    developers = [];
+    contentWriters = [];
+    companies = []
+    user = {};
+    _token = "";
+    errors = {};
 
 	constructor() {}
 

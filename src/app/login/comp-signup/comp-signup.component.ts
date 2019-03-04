@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { RestApiService } from '../../shared/rest-api.service';
 import { AppStore } from '../../app.store'
 import { Company } from './company.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-comp-signup',
@@ -18,7 +20,7 @@ export class CompSignupComponent implements OnInit {
   r6 = ['','','','','',''];
   error = {};
 
-  constructor(private appStore: AppStore, private router: Router,) { }
+  constructor(private http: RestApiService, private appStore: AppStore, private router: Router,) { }
 
   ngOnInit() {
     this.company['referralCode'] = '';
@@ -29,11 +31,13 @@ export class CompSignupComponent implements OnInit {
   }
 
   haveRefferal(){
+    this.company['have_referral'] = true;
     this.showReferralCode = true;
     this.showAltReferralCode = false;
   }
 
   dontHaveRefferal(){
+    this.company['have_referral'] = false;
     this.showReferralCode = false;
     this.showAltReferralCode = true;
   }
@@ -46,8 +50,8 @@ export class CompSignupComponent implements OnInit {
         }
       }
     }
-    this.company['referralCode'] = this.r6.join("");
-    console.log(this.company['referralCode']);
+    this.company['referral_code'] = this.r6.join("");
+    console.log(this.company['referral_code']);
   }
 
   saveCompany(){
@@ -57,11 +61,18 @@ export class CompSignupComponent implements OnInit {
     this.validateNewCompany();
     console.log(this.error)
     if (Object.getOwnPropertyNames(this.error).length === 0){
-      this.appStore.companies.push(this.company);
-      this.company = new Company();
-      
-      alert("Company Saved");
-      this.router.navigate(['/login']);
+      this.http.url = environment.baseUrl + '1';
+      this.company['table'] = 'company';
+      this.company['secret'] = "$2y$10$IKTMx1reCFHIgOTzqQoPeukNferN5Z10bFol.itjyclfX7BAxtf4m";
+      this.http.addObj(this.company).subscribe((data:any)=>{
+        console.log(data);
+        if(data){
+          // this.router.navigate(['/login']);
+        }else{
+          console.log(this.appStore.errors['error']['errors']);
+          this.error = this.appStore.errors['error']['errors'];
+        }
+      });
     }
   }
 
@@ -93,9 +104,9 @@ export class CompSignupComponent implements OnInit {
   }
 
   validateNewCompanyConfirmPassword(){
-    if(this.company['password'] != this.company['confirm_password']){
-      this.error['confirm_password_ev'] = "Passwords did not match";
-      this.error['confirm_password']="visible";
+    if(this.company['password'] != this.company['password_confirmation']){
+      this.error['password_confirmation_ev'] = "Passwords did not match";
+      this.error['password_confirmation']="visible";
     }
   }
 
