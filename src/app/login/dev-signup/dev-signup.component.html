@@ -32,7 +32,7 @@
 					<i class="glyphicon glyphicon-user inpicon"></i>
 					<input type="text" id="full_name" name="full_name" class="form-control inpoffset" [(ngModel)]="dev['full_name']" />
 				</div>
-				<p class="error" [style.visibility]="error['full_name']">{{error['full_name_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="e" *ngIf="e['full_name']">{{e['full_name'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group inpiconc">
@@ -40,7 +40,7 @@
 							<i class="glyphicon glyphicon-user inpicon"></i>
 							<input type="tel" id="tel" name="tel" class="form-control inpoffset" [(ngModel)]="dev['tel']" />
 						</div>
-						<p class="error" [style.visibility]="error['tel']">{{error['tel_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+						<p class="e" *ngIf="e['tel']">{{e['tel'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group inpiconc">
@@ -48,7 +48,7 @@
 							<i class="glyphicon glyphicon-user inpicon"></i>
 							<input type="text" id="skype" name="skype" class="form-control inpoffset" [(ngModel)]="dev['skype']" />
 						</div>
-						<p class="error" [style.visibility]="error['skype']">{{error['skype_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+						<p class="e" *ngIf="e['skype']">{{e['skype'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 					</div>
 				</div>
 				<div class="form-group inpiconc">
@@ -61,7 +61,7 @@
 						<option value="content_writer">ContentWriter</option>
 					</select>
 				</div>
-				<p class="error" [style.visibility]="error['profession']">{{error['profession_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="e" *ngIf="e['profession']">{{e['profession'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 			</form>
 			<hr>
 			<form class="signup-form">
@@ -70,7 +70,7 @@
 					<i class="glyphicon glyphicon-envelope inpicon"></i>
 					<input type="email" id="email" name="email" class="form-control inpoffset" [(ngModel)]="dev['email']" />
 				</div>
-				<p class="error" [style.visibility]="error['email']">{{error['email_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="e" *ngIf="e['email']">{{e['email'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 				<div class="form-group inpiconc">
 					<label for="password" class="form-lable">PASSWORD</label>
 					<i class="glyphicon glyphicon-lock inpicon"></i>
@@ -79,7 +79,7 @@
 					<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
 					<input type="text" id="password" name="password" class="form-control inpoffset" [(ngModel)]="dev['password']" *ngIf="pwShow" />
 				</div>
-				<p class="error" [style.visibility]="error['password']">{{error['password_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="e" *ngIf="e['password']">{{e['password'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 				<div class="form-group inpiconc">
 					<label for="password_confirmation" class="form-lable">CONFIRM PASSWORD</label>
 					<i class="glyphicon glyphicon-lock inpicon"></i>
@@ -88,7 +88,7 @@
 					<i class="glyphicon glyphicon-eye-close inpicon2" *ngIf="pwShow" (click)="onPwopen()"></i>
 					<input type="text" id="password_confirmation" name="password_confirmation" class="form-control inpoffset" [(ngModel)]="dev['password_confirmation']" *ngIf="pwShow" />
 				</div>
-				<p class="error" [style.visibility]="error['password_confirmation']">{{error['password_confirmation_ev']}}<i class="glyphicon glyphicon-info-sign"></i></p>
+				<p class="e" *ngIf="e['password_confirmation']">{{e['password_confirmation'][0]}}<i class="glyphicon glyphicon-info-sign"></i></p>
 			</form>
 		</div>
 	</div>
