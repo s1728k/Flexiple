@@ -8,16 +8,18 @@
 					<label for="email">EMAIL ID</label>
 					<i class="glyphicon glyphicon-envelope inpicon"></i>
 					<input type="email" id="email" class="form-control inpoffset" [(ngModel)]="dev['email']" />
+					<p class="e" *ngIf="e['email']">{{e['email'][0]}}</p>
 				</div>
 				<div class="form-group inpiconc">
 					<label for="password">PASSWORD</label>
 					<i class="glyphicon glyphicon-lock inpicon"></i>
 					<input type="password" id="password" class="form-control inpoffset" [(ngModel)]="dev['password']" />
+					<p class="e" *ngIf="e['password']">{{e['password'][0]}}</p>
 				</div>
 				<div class="form-group inpiconc">
 					<label for="login_as" class="form-lable">PROFESSION</label>
 					<i class="glyphicon glyphicon-user inpicon"></i>
-					<select id="login_as" name="login_as" class="form-control inpoffset" [(ngModel)]="login_as" required>
+					<select id="login_as" name="login_as" class="form-control inpoffset" [(ngModel)]="author" required>
 						<option value="" disabled selected hidden>Select one</option>
 						<option value="designer">Designer</option>
 						<option value="developer">Developer</option>
@@ -29,7 +31,8 @@
 				<div class="form-group text-center">
 					<button class="send" (click)="login()">Send</button>
 				</div>
-				<p class="error">{{error['login_failed']}}</p>
+				<p class="e">{{msg}}</p>
+				<p class="error">{{e['login_failed']}}</p>
 				<p class="text-center">Dont have an account <a [routerLink]="['/profile-selection']">Create one now</a></p>
 			</div>
 		</div>

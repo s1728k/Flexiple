@@ -17,7 +17,7 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10 table-responsive">
 			<table class="table" *ngIf="!active['company']">
-				<caption>Users | My name is {{user['full_name']}}. I am {{user['profession']}}</caption>
+				<caption>Users | My name is {{user}}. I am {{author}}</caption>
 				<thead>
 					<tr>
 						<th>Id</th>
@@ -44,7 +44,7 @@
 				</tbody>
 			</table>
 			<table class="table" *ngIf="active['company']">
-				<caption>Companies  | Company name : {{user['company_name']}}</caption>
+				<caption>Companies  | Company name : {{user}}</caption>
 				<thead>
 					<tr>
 						<th>Id</th>

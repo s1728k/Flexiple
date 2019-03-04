@@ -15,9 +15,10 @@ export class LoginScreenComponent implements OnInit {
   email = "";
   password = "";
   rem = false;
-  error = {};
+  e = {};
   dev ={};
-  login_as = "";
+  author = "";
+  msg = "";
 
   constructor(private http: RestApiService, private appStore: AppStore, private router: Router, private authGuard: AuthGuard,) { }
 
@@ -26,20 +27,33 @@ export class LoginScreenComponent implements OnInit {
 
   login(){
       this.http.url = environment.baseUrl + '3';
-      this.dev['table'] = this.login_as;
+      this.dev['table'] = this.author;
       this.dev['secret'] = "$2y$10$IKTMx1reCFHIgOTzqQoPeukNferN5Z10bFol.itjyclfX7BAxtf4m";
-      this.http.addObj(this.dev).subscribe((data:any)=>{
-        console.log(data);
-        if(data.status == "success"){
-          sessionStorage.setItem('_token', data._token);
+      this.http.addObj(this.dev).subscribe((res:any)=>{
+        console.log(res);
+        if(res['status'] == "success"){
+          
+          sessionStorage.setItem('_token', res['_token']);
           sessionStorage.setItem('isLoggedIn', 'true');
-          sessionStorage.setItem('logged_in_as', this.login_as);
-          localStorage.setItem('id', data.user.id);
+          if(this.author == 'company'){
+            sessionStorage.setItem('user', res['user']['company_name']);
+          }else{
+            sessionStorage.setItem('user', res['user']['full_name']);
+          }
+
           const navigationExtras: NavigationExtras = {
-            queryParams: {'users': this.login_as},
+            queryParams: {'author': this.author,'table': this.author},
           };
           this.router.navigate(['/dashboard'], navigationExtras);
-          // this.router.navigate(['/dashboard']);
+        }else{
+          if(res['error']){
+            this.msg = res['error'];
+          }else{
+            this.msg = res['message'];
+          }
+          if(res['errors']){
+            this.e = res['errors'];
+          }
         }
       });
   }

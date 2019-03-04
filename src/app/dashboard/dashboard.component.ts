@@ -14,39 +14,41 @@ import { environment } from '../../environments/environment';
 export class DashboardComponent implements OnInit {
 
 	freelancers: Dev[];
-	companies: Company[];
+  companies: Company[];
   active = {};
-  user = {};
+  user = "";
+  author="";
+  table="";
 
-  constructor(private http: RestApiService, private appStore: AppStore, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: RestApiService, private appStore: AppStore, private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+        return false;
+    };
     this.route.queryParams.subscribe(params => {
-        this.getUsers(params['users']);
+      this.author = params['author'];
+      this.table = params['table'];
+      this.user = sessionStorage.getItem('user');
+      this.active[this.table] = true;
+      this.getUsers();
     });
   }
 
-  getUsers(user){
-    this.active[user] = true;
-    this.http.url = environment.baseUrl + '4?author=' + sessionStorage.getItem('logged_in_as') + "&table=" + user + "&_token=" + sessionStorage.getItem('_token');
-    this.http.getObjs().subscribe((data:any)=>{
-      console.log(data);
-      if(data['status'] == 'success'){
-        sessionStorage.setItem('_token', data._token);
+  getUsers(){
+    this.http.url = environment.baseUrl + '4?author=' + this.author + "&table=" + this.table + "&_token=" + sessionStorage.getItem('_token');
+    this.http.getObjs().subscribe((res)=>{
+      if(res['status'] == 'success'){
+        sessionStorage.setItem('_token', res['_token']);
           if(this.active['company']){
-            this.companies = data.data;
-            if(sessionStorage.getItem('logged_in_as')==user){
-              this.user = this.companies.find(x => x.id == +localStorage.getItem('id'));
-            }
+            this.companies = res['data'];
           }else{
-            this.freelancers = data.data;
-            if(sessionStorage.getItem('logged_in_as')==user){
-              this.user = this.freelancers.find(x => x.id == +localStorage.getItem('id'));
-            }
+            this.freelancers = res['data'];
           }
       }else{
-        console.log(data['status'])
-        sessionStorage.setItem('_token', data._token);
+        console.log(res['error'])
+        sessionStorage.setItem('_token', res['_token']);
         this.freelancers=[];
         this.companies=[];
       }
@@ -63,9 +65,10 @@ export class DashboardComponent implements OnInit {
   routing(prof){
     this.active = {};
     const navigationExtras: NavigationExtras = {
-      queryParams: {'users': prof},
+      queryParams: {'author': this.author,'table': prof},
     };
     this.router.navigate(['/dashboard'], navigationExtras);
   }
+
 
 }
